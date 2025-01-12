@@ -1,0 +1,42 @@
+<div class="flex flex-col border border-zinc-300 rounded-lg p-4 w-1/2 bg-zinc-200 m-4">
+    <form class="flex flex-col" [formGroup]="Form" (ngSubmit)="onSubmit()">
+      <input formControlName="nom" placeholder="Nom" />
+      <input formControlName="localisation" placeholder="Localisation" />
+      <input formControlName="superficie" placeholder="Superficie" />
+      <input formControlName="date_de_creation" placeholder="Date de création" />
+      <button class="btn rounded-lg bg-blue-400 p-2 w-1/3">Submit</button>
+    </form>
+  </div>
+  
+  <div class="search-bar">
+    <input 
+      [(ngModel)]="inputText" 
+      (input)="onSearch()" 
+      placeholder="Rechercher une ferme..." 
+      class="w-full p-2 border border-gray-300 rounded-md"
+    />
+  </div>
+  
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Nom</th>
+          <th scope="col" class="px-6 py-3">Localisation</th>
+          <th scope="col" class="px-6 py-3">Superficie</th>
+          <th scope="col" class="px-6 py-3">Date de création</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white dark:bg-gray-800" *ngFor="let ferme of fermeListFiltree">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ ferme.nom }}
+          </th>
+          <td class="px-6 py-4">{{ ferme.localisation }}</td>
+          <td class="px-6 py-4">{{ ferme.superficie }}</td>
+          <td class="px-6 py-4">{{ ferme.date_de_creation | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

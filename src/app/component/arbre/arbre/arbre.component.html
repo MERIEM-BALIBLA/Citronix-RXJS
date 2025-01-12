@@ -1,0 +1,18 @@
+<div class="arbre-list">
+    <h2>List of Trees</h2>
+  
+    <!-- Displaying the arbre list -->
+    <div *ngFor="let arbre of arbreList" class="arbre-item">
+      <p><strong>Name:</strong> {{ arbre.date_de_plantation }}</p>
+      <!-- <p><strong>Type:</strong> {{ arbre.type }}</p> -->
+      <!-- Add more properties as needed -->
+    </div>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="previousPage()" [disabled]="currentPage.value === 0">Previous</button>
+      <span>Page {{ currentPage.value + 1 }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage.value === totalPages - 1">Next</button>
+    </div>
+  </div>
+  
